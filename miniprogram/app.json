@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/freshness/freshness",
+    "pages/web/web",
     "pages/index/index",
     "pages/setup/create",
     "pages/setup/join",

@@ -1,0 +1,23 @@
+# WeChat Mini Program build outputs
+miniprogram/dist/
+miniprogram/.idea/
+miniprogram/.vscode/
+
+# Node.js dependencies
+node_modules/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Compiled TypeScript
+miniprogram/**/*.js
+miniprogram/**/*.js.map
+
+# Local config
+project.private.config.json 
