@@ -7,6 +7,13 @@
   justify-content: flex-start;
 }
 
+.initial-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title {
   color: #fff;
   font-size: 32rpx;
@@ -48,9 +55,10 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 32rpx;
+  gap: 20rpx;
   width: 100%;
   margin-top: 32rpx;
+  padding: 0 32rpx;
 }
 
 .camera-btn {
@@ -69,4 +77,303 @@
   font-size: 28rpx;
   flex: 1;
   margin: 0 16rpx;
+}
+
+.retake-btn {
+  background: #666;
+  color: #fff;
+  border-radius: 32rpx;
+  font-size: 24rpx;
+  flex: 1;
+  min-width: 120rpx;
+  margin: 0 8rpx;
+}
+
+.reselect-btn {
+  background: #b266ff;
+  color: #fff;
+  border-radius: 32rpx;
+  font-size: 24rpx;
+  flex: 1;
+  min-width: 120rpx;
+  margin: 0 8rpx;
+}
+
+.analyze-btn {
+  background: #00c851;
+  color: #fff;
+  border-radius: 32rpx;
+  font-size: 24rpx;
+  flex: 2;
+  min-width: 180rpx;
+  margin: 0 8rpx;
+}
+
+/* Non-Food View Styles */
+.non-food-view {
+  width: 100vw;
+  min-height: 100vh;
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 32rpx;
+}
+
+.data-table {
+  width: 100%;
+  background: #fff;
+  border-radius: 12rpx;
+  margin: 32rpx 0;
+  overflow: hidden;
+}
+
+.table-header {
+  display: flex;
+  background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
+}
+
+.header-cell {
+  flex: 1;
+  padding: 16rpx 8rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  border-right: 1px solid #ddd;
+}
+
+.header-cell:last-child {
+  border-right: none;
+}
+
+.table-row {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.cell {
+  flex: 1;
+  padding: 16rpx 8rpx;
+  font-size: 22rpx;
+  text-align: center;
+  color: #333;
+  border-right: 1px solid #eee;
+}
+
+.cell:last-child {
+  border-right: none;
+}
+
+.warning-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64rpx 32rpx;
+}
+
+.warning-icon {
+  font-size: 120rpx;
+  margin-bottom: 32rpx;
+}
+
+.warning-title {
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 24rpx;
+}
+
+.warning-message {
+  color: #ccc;
+  font-size: 28rpx;
+  line-height: 1.5;
+  margin-bottom: 16rpx;
+}
+
+.suggestion-text {
+  color: #999;
+  font-size: 24rpx;
+  margin-bottom: 48rpx;
+}
+
+.non-food-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+  width: 100%;
+  padding-bottom: 48rpx;
+}
+
+/* Result View Styles */
+.result-view {
+  width: 100vw;
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-image {
+  width: 100%;
+  height: 60vh;
+  background: #f5f5f5;
+}
+
+.result-image image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.result-content {
+  flex: 1;
+  background: #2c3e50;
+  padding: 32rpx;
+  color: #fff;
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.item-name {
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.freshness-status {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.freshness-status.fresh {
+  color: #00c851;
+}
+
+.freshness-status.not-fresh {
+  color: #ff4444;
+}
+
+.summary {
+  color: #ecf0f1;
+  font-size: 28rpx;
+  line-height: 1.5;
+  margin-bottom: 32rpx;
+}
+
+.price-section {
+  margin-bottom: 32rpx;
+}
+
+.price-label {
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.price-value {
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.price-source {
+  color: #3498db;
+  font-size: 24rpx;
+  margin-top: 8rpx;
+}
+
+.features-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48rpx;
+}
+
+.features-column {
+  flex: 1;
+  margin: 0 16rpx;
+}
+
+.features-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+
+.features-title.good {
+  color: #00c851;
+}
+
+.features-title.bad {
+  color: #ff4444;
+}
+
+.feature-item {
+  font-size: 26rpx;
+  line-height: 1.8;
+  margin-bottom: 8rpx;
+}
+
+.feature-item.good {
+  color: #ecf0f1;
+}
+
+.feature-item.bad {
+  color: #ecf0f1;
+}
+
+.recipe-section {
+  margin-bottom: 48rpx;
+}
+
+.recipe-btn {
+  width: 100%;
+  background: #f39c12;
+  color: #fff;
+  border-radius: 32rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 24rpx;
+  border: none;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.action-btn {
+  flex: 1;
+  border-radius: 32rpx;
+  font-size: 26rpx;
+  padding: 20rpx 0;
+  border: none;
+}
+
+.action-btn.retake {
+  background: #666;
+  color: #fff;
+}
+
+.action-btn.reselect {
+  background: #b266ff;
+  color: #fff;
+}
+
+.action-btn.reanalyze {
+  background: #00c851;
+  color: #fff;
 } 

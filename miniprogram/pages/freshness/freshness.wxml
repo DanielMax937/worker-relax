@@ -1,13 +1,104 @@
 <view class="container">
-  <view class="title">食材新鲜度检测</view>
-  <view class="card">
-    <view class="image-placeholder">
-      <image wx:if="{{imagePath}}" src="{{imagePath}}" mode="aspectFit" style="width:100%;height:100%;border-radius:12rpx;" />
-      <text wx:else class="prompt">拍照或从相册选择食材图片</text>
+  <view wx:if="{{!showResult}}" class="initial-view">
+    <view class="title">食材新鲜度检测</view>
+    <view class="card">
+      <view class="image-placeholder">
+        <image wx:if="{{imagePath}}" src="{{imagePath}}" mode="aspectFit" style="width:100%;height:100%;border-radius:12rpx;" />
+        <text wx:else class="prompt">拍照或从相册选择食材图片</text>
+      </view>
+      <view class="button-row">
+        <block wx:if="{{imagePath}}">
+          <button class="retake-btn" bindtap="onOpenCamera">重拍</button>
+          <button class="reselect-btn" bindtap="onSelectFromAlbum">重选</button>
+          <button class="analyze-btn" bindtap="onAnalyzeFreshness">分析新鲜度</button>
+        </block>
+        <block wx:else>
+          <button class="camera-btn" type="primary" bindtap="onOpenCamera">打开相机</button>
+          <button class="album-btn" type="default" bindtap="onSelectFromAlbum">从相册选择</button>
+        </block>
+      </view>
     </view>
-    <view class="button-row">
-      <button class="camera-btn" type="primary" bindtap="onOpenCamera">打开相机</button>
-      <button class="album-btn" type="default" bindtap="onSelectFromAlbum">从相册选择</button>
+  </view>
+
+  <!-- Non-Food Result View -->
+  <view wx:if="{{showResult && analysisResult && analysisResult.isFood === false}}" class="non-food-view">
+    <view class="title">食材新鲜度检测</view>
+    
+    <!-- Data Table (placeholder) -->
+    <view class="result-image">
+      <image src="{{imagePath}}" mode="aspectFit" />
+    </view>
+    
+    <!-- Warning Section -->
+    <view class="warning-section">
+      <view class="warning-icon">⚠️</view>
+      <view class="warning-title">非食材图片</view>
+      <view class="warning-message">{{analysisResult.message || '这不是食物图片，请上传蔬菜、水果或肉类的图片进行新鲜度分析。'}}</view>
+      <view class="suggestion-text">请上传蔬菜、水果或肉类的图片</view>
+    </view>
+    
+    <!-- Action Buttons -->
+    <view class="non-food-actions">
+      <button class="action-btn retake" bindtap="onOpenCamera">重拍</button>
+      <button class="action-btn reselect" bindtap="onSelectFromAlbum">重选</button>
+      <button class="action-btn reanalyze" bindtap="onAnalyzeFreshness">重新分析</button>
+    </view>
+  </view>
+
+  <!-- Food Analysis Results View -->
+  <view wx:if="{{showResult && analysisResult && analysisResult.isFood === true}}" class="result-view">
+    <!-- Result Image -->
+    <view class="result-image">
+      <image src="{{imagePath}}" mode="aspectFit" />
+    </view>
+    
+    <!-- Result Content -->
+    <view class="result-content">
+      <!-- Header -->
+      <view class="result-header">
+        <text class="item-name">{{analysisResult.itemType}} - </text>
+        <text class="freshness-status {{analysisResult.isFresh ? 'fresh' : 'not-fresh'}}">
+          {{analysisResult.isFresh ? '新鲜' : '不新鲜'}}
+        </text>
+      </view>
+      
+      <!-- Summary -->
+      <view class="summary">{{analysisResult.summary}}</view>
+      
+      <!-- Market Price -->
+      <view wx:if="{{analysisResult.marketPrice}}" class="price-section">
+        <text class="price-label">最新市场价格: </text>
+        <text class="price-value">{{analysisResult.marketPrice.price}} 元/{{analysisResult.marketPrice.unit}}</text>
+        <view class="price-source">数据来源: {{analysisResult.marketPrice.dataSource}}</view>
+      </view>
+      
+      <!-- Features -->
+      <view class="features-container">
+        <view class="features-column">
+          <view class="features-title good">新鲜特征:</view>
+          <view wx:for="{{analysisResult.goodFeatures}}" wx:key="index" class="feature-item good">
+            • {{item}}
+          </view>
+        </view>
+        <view class="features-column">
+          <view class="features-title bad">不新鲜特征:</view>
+          <view wx:for="{{analysisResult.badFeatures}}" wx:key="index" class="feature-item bad">
+            • {{item}}
+          </view>
+        </view>
+      </view>
+      
+      <!-- Recipe Button -->
+      <view class="recipe-section">
+        <button class="recipe-btn" bindtap="onGetRecipe">获取推荐食谱</button>
+      </view>
+      
+      <!-- Action Buttons -->
+      <view class="action-buttons">
+        <button class="action-btn retake" bindtap="onOpenCamera">重拍</button>
+        <button class="action-btn reselect" bindtap="onSelectFromAlbum">重选</button>
+        <button class="action-btn reanalyze" bindtap="onReanalyze">重新分析</button>
+      </view>
     </view>
   </view>
 </view> 
